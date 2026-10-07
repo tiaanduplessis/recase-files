@@ -32,8 +32,8 @@ const transformers = {
   const transform = transformers[args.transform || args.t]
 
   await Promise.all(paths.map(async current => {
-    const oldName = path.parse(current).name
-    const transformedName = transform(oldName)
-    return fs.rename(current, current.replace(oldName, transformedName))
+    const { root, dir, name, ext } = path.parse(current)
+    const transformedName = transform(name)
+    return fs.rename(current, path.format({ root, dir, name: transformedName, ext }))
   }))
 })()
