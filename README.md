@@ -23,6 +23,9 @@ npx recase-files ./public/images/** -t kebab
 
 Supported transforms are: `kebab`, `snake`, `train`, `pascal`, `camel`, `lower`, `upper`
 
+Only each file's name is transformed; its directory and final extension are preserved.
+For example, `Foo Bar/Foo Bar.txt` becomes `Foo Bar/foo-bar.txt` with `-t kebab`.
+
 ## Install
 
 This project uses [node](https://nodejs.org) and [npm](https://www.npmjs.com). 
@@ -32,6 +35,8 @@ $ npm install --global recase-files
 ```
 
 ## Contribute
+
+Run the dependency-free path regression tests with `npm test`.
 
 1. Fork it and create your feature branch: `git checkout -b my-new-feature`
 2. Commit your changes: `git commit -am "Add some feature"`
