@@ -38,6 +38,14 @@ $ npm install --global recase-files
 
 Run the dependency-free path regression tests with `npm test`.
 
+The lockfile preserves the tested runtime dependencies, including `casey-js` 1.7.0;
+[1.7.1 declares Node.js >=18](https://registry.npmjs.org/casey-js/1.7.1).
+It makes repository installs reproducible, but is not included in published packages:
+`npm install` and `npx` consumers still resolve the ranges in `package.json`.
+
+This lockfile repair is not a security fix. The runtime graph still includes the
+unresolved [braces nesting advisory](https://github.com/advisories/GHSA-vfj7-8cjw-p6xm).
+
 1. Fork it and create your feature branch: `git checkout -b my-new-feature`
 2. Commit your changes: `git commit -am "Add some feature"`
 3. Push to the branch: `git push origin my-new-feature`
